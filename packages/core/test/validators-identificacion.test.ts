@@ -34,9 +34,15 @@ describe('validarCedula', () => {
     expect(validarCedula('').valido).toBe(false);
   });
 
-  it('rechaza provincia inválida (00 o > 24)', () => {
+  it('rechaza provincia inválida (00 o > 24 distinta de 30)', () => {
     expect(validarCedula('0024383631').valido).toBe(false);
     expect(validarCedula('2524383631').valido).toBe(false);
+    expect(validarCedula('3124383631').valido).toBe(false);
+  });
+
+  it('acepta provincia 30 (servicio exterior / consulares) — S4', () => {
+    // Cédula con provincia 30, tercer dígito 0, DV calculado vía módulo 10
+    expect(validarCedula('3001234560').valido).toBe(true);
   });
 
   it('rechaza tercer dígito > 5', () => {
@@ -94,6 +100,11 @@ describe('validarRuc', () => {
 
   it('rechaza provincia inválida', () => {
     expect(validarRuc('9990016919001').valido).toBe(false);
+  });
+
+  it('acepta provincia 30 en RUC (servicio exterior / consulares) — S4', () => {
+    // RUC sociedad privada con provincia 30, DV calculado vía módulo 11
+    expect(validarRuc('3099999992001').valido).toBe(true);
   });
 });
 
