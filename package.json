@@ -1,0 +1,24 @@
+{
+  "name": "sri-cli-monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Monorepo for sri-cli — CLI + MCP server for SRI Ecuador electronic invoicing",
+  "license": "AGPL-3.0-only",
+  "author": "Luis Yagual <lucho15465@gmail.com>",
+  "homepage": "https://github.com/luismanuu/sri-cli",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luismanuu/sri-cli.git"
+  },
+  "scripts": {
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "lint:voseo": "node scripts/check-voseo.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@9.0.0"
+}
