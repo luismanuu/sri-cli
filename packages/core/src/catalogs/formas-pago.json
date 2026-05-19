@@ -1,0 +1,58 @@
+[
+  {
+    "id": "cbe13b24-7695-4cae-add9-91daddfeee16",
+    "codigo": "01",
+    "descripcion": "SIN UTILIZACION DEL SISTEMA FINANCIERO",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "20956a88-fa15-43e1-b29a-56a35764cc02",
+    "codigo": "15",
+    "descripcion": "COMPENSACIÓN DE DEUDAS",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "9ae1ecae-14ea-4ce7-9969-3d31f59a7e86",
+    "codigo": "16",
+    "descripcion": "TARJETA DE DÉBITO",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "0dce36f7-3b1c-4932-865d-5ef56f6dd96d",
+    "codigo": "17",
+    "descripcion": "DINERO ELECTRÓNICO",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "5ef15eab-be87-44f1-b06c-171fe73738fe",
+    "codigo": "18",
+    "descripcion": "TARJETA PREPAGO",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "5b1274eb-2702-41e0-bcc8-58e91e090e9c",
+    "codigo": "19",
+    "descripcion": "TARJETA DE CRÉDITO",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "8204dbbf-d031-4314-bee8-64f2875c1773",
+    "codigo": "20",
+    "descripcion": "OTROS CON UTILIZACIÓN DEL SISTEMA FINANCIERO",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "d330349e-af17-4fef-983f-14c9abd52aea",
+    "codigo": "21",
+    "descripcion": "ENDOSO DE TÍTULOS",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  }
+]

@@ -1,0 +1,163 @@
+[
+  {
+    "id": "98e622e0-0e65-43fc-9c4d-8d2cad5e5354",
+    "codigo": "01",
+    "descripcion": "FACTURA",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "e71bee45-4796-4379-b2ff-7963a517f7f7",
+    "codigo": "02",
+    "descripcion": "NOTA O BOLETA DE VENTA",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "61dfe0f0-6bd1-4753-adce-71f676f57e23",
+    "codigo": "03",
+    "descripcion": "LIQUIDACIÓN DE COMPRA DE BIENES O PRESTACIÓN DE SERVICIOS",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "514e21cd-63cd-46b2-b935-e6dca4977fa1",
+    "codigo": "04",
+    "descripcion": "NOTA DE CRÉDITO",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "59f8e959-d54b-4831-b7ae-e5fc92b615e9",
+    "codigo": "05",
+    "descripcion": "NOTA DE DÉBITO",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "30b93c68-150d-4a7d-81e9-826ca644c905",
+    "codigo": "06",
+    "descripcion": "GUÍA DE REMISIÓN",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "3bcd6a01-27e7-4e4a-9dd1-8260f5af80f6",
+    "codigo": "07",
+    "descripcion": "COMPROBANTE DE RETENCIÓN",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "6ceb1f88-3119-4ee9-be4f-96724695aec2",
+    "codigo": "08",
+    "descripcion": "BOLETOS O ENTRADAS A ESPECTÁCULOS PÚBLICOS",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "84f00033-0f90-4b89-9806-07eaf5040f9d",
+    "codigo": "09",
+    "descripcion": "TIQUETES O VALES EMITIDOS POR MÁQUINAS REGISTRADORAS",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "be1142c8-3458-432d-8047-d9886cf3243e",
+    "codigo": "11",
+    "descripcion": "PASAJES EXPEDIDOS POR EMPRESAS DE AVIACIÓN",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "5683762d-52df-405e-b84a-7ed098613ca1",
+    "codigo": "12",
+    "descripcion": "DOCUMENTOS EMITIDOS POR INSTITUCIONES FINANCIERAS",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "f4401850-b070-4fb0-9170-6ffa672fd8cb",
+    "codigo": "15",
+    "descripcion": "COMPROBANTE DE VENTA EMITIDO EN EL EXTERIOR",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "167946a2-37c8-4afb-ba4f-df54f798f946",
+    "codigo": "18",
+    "descripcion": "DOCUMENTOS AUTORIZADOS UTILIZADOS EN VENTAS EXCEPTO N/C N/D",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "82384304-734e-49db-9bec-9dcce145d43f",
+    "codigo": "19",
+    "descripcion": "COMPROBANTES DE PAGO DE CUOTAS O APORTES",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "bb6b2bbd-1fbf-4a33-aab0-afe89bc57b62",
+    "codigo": "20",
+    "descripcion": "DOCUMENTOS POR SERVICIOS ADMINISTRADORAS DE TARJETA DE CRÉDITO",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "2b77b372-cc91-4eec-8a52-45278b98800e",
+    "codigo": "21",
+    "descripcion": "CARTA DE PORTE AÉREO",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "e686bcee-8f73-4717-a52f-93a250f68673",
+    "codigo": "41",
+    "descripcion": "COMPROBANTE DE VENTA EMITIDO POR REEMBOLSO",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "c1498752-c8fe-4377-8152-82ac18d7b6b7",
+    "codigo": "42",
+    "descripcion": "DOCUMENTO RETENCIÓN PRESUNTIVA Y RETENCIÓN EMITIDA POR PROPIO VENDEDOR",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "dd8bee9a-ce2e-4f8e-b901-dd20325f6610",
+    "codigo": "43",
+    "descripcion": "LIQUIDACIÓN PARA EXPLOTACIÓN Y EXPLORACIÓN DE HIDROCARBUROS",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "7a34e61d-ad5b-4e4a-9058-912f1b3f8004",
+    "codigo": "44",
+    "descripcion": "COMPROBANTE DE CONTRIBUCIONES Y APORTES",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "595cf3fc-1192-4b70-af81-749d1959e484",
+    "codigo": "45",
+    "descripcion": "LIQUIDACIÓN POR RECLAMOS DE ASEGURADORAS",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "51a7905b-b084-49fe-9b78-725da2fd401a",
+    "codigo": "47",
+    "descripcion": "NOTA DE CRÉDITO POR REEMBOLSO EMITIDA POR INTERMEDIARIO",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "19ce129a-d583-446e-98ca-4eb82a792b80",
+    "codigo": "48",
+    "descripcion": "NOTA DE DÉBITO POR REEMBOLSO EMITIDA POR INTERMEDIARIO",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  }
+]

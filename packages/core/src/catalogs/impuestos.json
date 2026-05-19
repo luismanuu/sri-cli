@@ -1,0 +1,29 @@
+[
+  {
+    "id": "a228e0d0-55e1-4b9d-8867-c2c82ea585ee",
+    "codigo": "2",
+    "nombre": "IVA",
+    "descripcion": "Impuesto al Valor Agregado",
+    "activo": true,
+    "created_at": "2026-01-23 20:47:05.534545+00",
+    "updated_at": "2026-01-23 20:47:05.534545+00"
+  },
+  {
+    "id": "738725d4-9f49-45a5-bb9b-d31a9d2a6b5c",
+    "codigo": "3",
+    "nombre": "ICE",
+    "descripcion": "Impuesto a los Consumos Especiales",
+    "activo": true,
+    "created_at": "2026-01-23 20:47:05.534545+00",
+    "updated_at": "2026-01-23 20:47:05.534545+00"
+  },
+  {
+    "id": "700f88e1-0bd3-4c55-8dda-4f62a0137f5f",
+    "codigo": "5",
+    "nombre": "IRBPNR",
+    "descripcion": "Impuesto Redimible Botellas Plásticas No Retornables",
+    "activo": true,
+    "created_at": "2026-01-23 20:47:05.534545+00",
+    "updated_at": "2026-01-23 20:47:05.534545+00"
+  }
+]

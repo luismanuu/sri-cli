@@ -1,0 +1,65 @@
+[
+  {
+    "id": "6026cac9-2b5b-4b74-b834-d23e6df6ff1c",
+    "codigo": "01",
+    "descripcion": "VENTA",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "2431c661-6e53-489c-862e-4271eae59b59",
+    "codigo": "02",
+    "descripcion": "COMPRA",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "5f4d4fcc-1031-4c1c-82cb-69e69e7eb6dc",
+    "codigo": "03",
+    "descripcion": "TRANSFORMACIÓN",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "72f3b26a-7131-4a86-97ad-f524e850f8b4",
+    "codigo": "04",
+    "descripcion": "CONSIGNACIÓN",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "2086b77a-8a55-4406-bc9e-e75817d2ac32",
+    "codigo": "05",
+    "descripcion": "DEVOLUCIÓN",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "0bd47e88-f9ae-4e6d-af5b-790af86813ad",
+    "codigo": "06",
+    "descripcion": "TRASLADO ENTRE ESTABLECIMIENTOS DE UNA MISMA EMPRESA",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "f64b19b2-685e-42f8-84d7-d9abb3cc594e",
+    "codigo": "07",
+    "descripcion": "TRASLADO POR EMISOR ITINERANTE",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "cdb4116b-8f0f-4dc5-8126-f5268a7d9fe4",
+    "codigo": "08",
+    "descripcion": "EXPORTACIÓN",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "080c02be-2b88-4b53-9839-1e9e867e431b",
+    "codigo": "09",
+    "descripcion": "OTROS",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  }
+]
