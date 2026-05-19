@@ -10,14 +10,17 @@ import {
   extraerRucDeClaveAcceso,
   extraerSecuencialDeClaveAcceso,
   extraerTipoComprobanteDeClaveAcceso,
+  formatearFecha,
   generarClaveAcceso,
   parsearClaveAcceso,
   validarFormatoClaveAcceso,
 } from '../src/clave-acceso/index.js';
 import { ClaveAccesoError } from '../src/errors/index.js';
 
+// 2026-02-07 17:00 UTC = 12:00 America/Guayaquil — fecha inequívoca día 07
+// independientemente del TZ del runtime.
 const baseData = {
-  fechaEmision: new Date(2026, 1, 7),
+  fechaEmision: new Date('2026-02-07T17:00:00Z'),
   tipoComprobante: TipoComprobante.FACTURA,
   ruc: '0924383631001',
   ambiente: Ambiente.PRUEBAS,
@@ -143,6 +146,39 @@ describe('calcularDigitoVerificadorModulo11 (vía generate + validate)', () => {
     // suma = sum(1 * factores[j%6]) j=0..47 => 48/6=8 ciclos completos => 8*(2+3+4+5+6+7)=8*27=216
     // 216 % 11 = 7 => 11-7 = 4
     expect(calcularDigitoVerificadorModulo11(claveBase)).toBe('4');
+  });
+});
+
+describe('formatearFecha (timezone-safe, B2)', () => {
+  it('produce 06022026 para UTC midnight (= 19:00 ECT día anterior)', () => {
+    // UTC midnight de 2026-02-07 = 2026-02-06 19:00 ECT → día 06 en Ecuador.
+    // Este es el caso que rompía con getDate() en runtimes UTC.
+    const fecha = new Date('2026-02-07T00:00:00Z');
+    expect(formatearFecha(fecha)).toBe('06022026');
+  });
+
+  it('produce 07022026 para 20:00 UTC del mismo día (= 15:00 ECT)', () => {
+    const fecha = new Date('2026-02-07T20:00:00Z');
+    expect(formatearFecha(fecha)).toBe('07022026');
+  });
+
+  it('es independiente del TZ del runtime', () => {
+    const fecha = new Date('2026-02-07T17:00:00Z'); // 12:00 ECT
+    const original = process.env.TZ;
+    try {
+      process.env.TZ = 'UTC';
+      expect(formatearFecha(fecha)).toBe('07022026');
+      process.env.TZ = 'America/New_York';
+      expect(formatearFecha(fecha)).toBe('07022026');
+      process.env.TZ = 'Asia/Tokyo';
+      expect(formatearFecha(fecha)).toBe('07022026');
+    } finally {
+      if (original === undefined) {
+        delete process.env.TZ;
+      } else {
+        process.env.TZ = original;
+      }
+    }
   });
 });
 

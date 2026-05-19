@@ -6,6 +6,7 @@ import type { ClaveAccesoData, ClaveAccesoParseada } from './types.js';
 
 export * from './utils.js';
 export type { ClaveAccesoData, ClaveAccesoParseada } from './types.js';
+export { formatearFecha };
 
 /**
  * Genera una clave de acceso de 49 dígitos siguiendo la normativa SRI.
@@ -86,11 +87,28 @@ export function parsearClaveAcceso(claveAcceso: string): ClaveAccesoParseada | n
   };
 }
 
+/**
+ * Formatea un `Date` como `ddmmyyyy` interpretado siempre en la zona
+ * horaria de Ecuador (America/Guayaquil, UTC-5), independientemente del
+ * TZ del runtime (Vercel/Lambda/CI suelen ser UTC).
+ *
+ * Es crítico para la clave de acceso: usar `getDate()/getMonth()/
+ * getFullYear()` produciría un día distinto al esperado por el SRI
+ * cuando el proceso corre fuera de Ecuador.
+ */
+const fechaFormatter = new Intl.DateTimeFormat('en-US', {
+  timeZone: 'America/Guayaquil',
+  day: '2-digit',
+  month: '2-digit',
+  year: 'numeric',
+});
+
 function formatearFecha(date: Date): string {
-  const dia = date.getDate().toString().padStart(2, '0');
-  const mes = (date.getMonth() + 1).toString().padStart(2, '0');
-  const anio = date.getFullYear().toString();
-  return dia + mes + anio;
+  const parts = fechaFormatter.formatToParts(date);
+  const dia = parts.find((p) => p.type === 'day')!.value;
+  const mes = parts.find((p) => p.type === 'month')!.value;
+  const anio = parts.find((p) => p.type === 'year')!.value;
+  return `${dia}${mes}${anio}`;
 }
 
 function validarRucBasico(ruc: string): string {
