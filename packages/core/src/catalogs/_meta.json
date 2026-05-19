@@ -1,0 +1,15 @@
+{
+  "extracted_at": "2026-05-19T01:18:48.215Z",
+  "source_repo": "https://github.com/AngeloBarzolaVillamar/open-api-facturacion-sri",
+  "source_commit": "87c9ce42e435cde5fc621ab702642bdfb27d5c45",
+  "total_records": 80,
+  "counts": {
+    "documentos-sustento.json": 23,
+    "formas-pago.json": 8,
+    "impuestos.json": 3,
+    "motivos-traslado.json": 9,
+    "retenciones.json": 24,
+    "tarifas-impuesto.json": 8,
+    "tipos-identificacion.json": 5
+  }
+}

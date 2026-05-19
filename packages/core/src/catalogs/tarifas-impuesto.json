@@ -1,0 +1,98 @@
+[
+  {
+    "id": "97697df3-ae38-404f-bfcb-e0cc6ebd3395",
+    "impuesto_id": "a228e0d0-55e1-4b9d-8867-c2c82ea585ee",
+    "codigo_porcentaje": "0",
+    "descripcion": "IVA 0%",
+    "porcentaje": 0,
+    "vigente_desde": "2024-01-01",
+    "vigente_hasta": null,
+    "activo": true,
+    "created_at": "2026-01-23 20:47:05.534545+00",
+    "updated_at": "2026-01-23 20:47:05.534545+00"
+  },
+  {
+    "id": "cd729f39-8487-4fae-b03d-938ada2b3a3e",
+    "impuesto_id": "a228e0d0-55e1-4b9d-8867-c2c82ea585ee",
+    "codigo_porcentaje": "2",
+    "descripcion": "IVA 12%",
+    "porcentaje": 12,
+    "vigente_desde": "2024-01-01",
+    "vigente_hasta": null,
+    "activo": true,
+    "created_at": "2026-01-23 20:47:05.534545+00",
+    "updated_at": "2026-01-23 20:47:05.534545+00"
+  },
+  {
+    "id": "406dd54e-0779-4e5a-a64d-d74f78ce1af6",
+    "impuesto_id": "a228e0d0-55e1-4b9d-8867-c2c82ea585ee",
+    "codigo_porcentaje": "3",
+    "descripcion": "IVA 14%",
+    "porcentaje": 14,
+    "vigente_desde": "2024-01-01",
+    "vigente_hasta": null,
+    "activo": true,
+    "created_at": "2026-01-23 20:47:05.534545+00",
+    "updated_at": "2026-01-23 20:47:05.534545+00"
+  },
+  {
+    "id": "506198a2-6313-4e70-a039-b254d1c23bfc",
+    "impuesto_id": "a228e0d0-55e1-4b9d-8867-c2c82ea585ee",
+    "codigo_porcentaje": "4",
+    "descripcion": "IVA 15%",
+    "porcentaje": 15,
+    "vigente_desde": "2024-04-01",
+    "vigente_hasta": null,
+    "activo": true,
+    "created_at": "2026-01-23 20:47:05.534545+00",
+    "updated_at": "2026-01-23 20:47:05.534545+00"
+  },
+  {
+    "id": "6dc5e950-2ad3-4033-afeb-2433803ce440",
+    "impuesto_id": "a228e0d0-55e1-4b9d-8867-c2c82ea585ee",
+    "codigo_porcentaje": "5",
+    "descripcion": "IVA 5%",
+    "porcentaje": 5,
+    "vigente_desde": "2024-01-01",
+    "vigente_hasta": null,
+    "activo": true,
+    "created_at": "2026-01-23 20:47:05.534545+00",
+    "updated_at": "2026-01-23 20:47:05.534545+00"
+  },
+  {
+    "id": "5f3733e8-3abe-4742-98d8-d0669c8464b2",
+    "impuesto_id": "a228e0d0-55e1-4b9d-8867-c2c82ea585ee",
+    "codigo_porcentaje": "6",
+    "descripcion": "No Objeto de Impuesto",
+    "porcentaje": 0,
+    "vigente_desde": "2024-01-01",
+    "vigente_hasta": null,
+    "activo": true,
+    "created_at": "2026-01-23 20:47:05.534545+00",
+    "updated_at": "2026-01-23 20:47:05.534545+00"
+  },
+  {
+    "id": "6417d0ea-116a-4e27-8163-7a2e6e4c35a0",
+    "impuesto_id": "a228e0d0-55e1-4b9d-8867-c2c82ea585ee",
+    "codigo_porcentaje": "7",
+    "descripcion": "Exento de IVA",
+    "porcentaje": 0,
+    "vigente_desde": "2024-01-01",
+    "vigente_hasta": null,
+    "activo": true,
+    "created_at": "2026-01-23 20:47:05.534545+00",
+    "updated_at": "2026-01-23 20:47:05.534545+00"
+  },
+  {
+    "id": "71a37ebe-f71d-4167-aaf8-2117619f5fa7",
+    "impuesto_id": "a228e0d0-55e1-4b9d-8867-c2c82ea585ee",
+    "codigo_porcentaje": "8",
+    "descripcion": "IVA Diferenciado",
+    "porcentaje": 0,
+    "vigente_desde": "2024-01-01",
+    "vigente_hasta": null,
+    "activo": true,
+    "created_at": "2026-01-23 20:47:05.534545+00",
+    "updated_at": "2026-01-23 20:47:05.534545+00"
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "b3a69c29-221e-4497-9b96-525adcb95c31",
+    "codigo": "04",
+    "descripcion": "RUC",
+    "longitud": 13,
+    "regex_validacion": "^\\d{13}$",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "69fd9ff1-062e-4ff2-af5e-820b8d9afcd7",
+    "codigo": "05",
+    "descripcion": "CÉDULA",
+    "longitud": 10,
+    "regex_validacion": "^\\d{10}$",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "7fed96a2-8d01-4c62-9893-54de6f411d5b",
+    "codigo": "06",
+    "descripcion": "PASAPORTE",
+    "longitud": null,
+    "regex_validacion": "^[A-Za-z0-9]+$",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "3662ea2a-4fd5-46c3-b21d-65766dd6be67",
+    "codigo": "07",
+    "descripcion": "CONSUMIDOR FINAL",
+    "longitud": 13,
+    "regex_validacion": "^9{13}$",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  },
+  {
+    "id": "6d00648a-6768-443b-a904-e702a2cdb390",
+    "codigo": "08",
+    "descripcion": "IDENTIFICACIÓN DEL EXTERIOR",
+    "longitud": null,
+    "regex_validacion": "^[A-Za-z0-9]+$",
+    "activo": true,
+    "created_at": "2026-01-23 21:06:01.473951+00"
+  }
+]
