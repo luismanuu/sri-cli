@@ -120,5 +120,10 @@ function validarRucBasico(ruc: string): string {
 }
 
 function generarCodigoNumerico(): string {
-  return randomInt(10000000, 100000000).toString();
+  // Invariante: el codigoNumerico debe ser exactamente 8 dígitos para no
+  // romper el layout de 49 dígitos de la clave de acceso. randomInt con
+  // bounds [10000000, 100000000) hoy garantiza 8 dígitos, pero el padStart
+  // defensivo protege contra cambios futuros de bounds que pudieran
+  // introducir un bug silencioso en producción.
+  return randomInt(10000000, 100000000).toString().padStart(8, '0');
 }
