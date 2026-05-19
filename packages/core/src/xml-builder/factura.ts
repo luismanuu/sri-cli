@@ -9,6 +9,7 @@ import {
   construirInfoTributaria,
   crearBuilderXml,
   formatearDecimal,
+  sanitizarTextoSri,
 } from './shared.js';
 
 /**
@@ -52,7 +53,7 @@ function construirInfoFactura(info: InfoFactura): Record<string, unknown> {
     fechaEmision: info.fechaEmision,
   };
 
-  if (info.dirEstablecimiento) result.dirEstablecimiento = info.dirEstablecimiento;
+  if (info.dirEstablecimiento) result.dirEstablecimiento = sanitizarTextoSri(info.dirEstablecimiento);
   if (info.contribuyenteEspecial) result.contribuyenteEspecial = info.contribuyenteEspecial;
 
   result.obligadoContabilidad = info.obligadoContabilidad;
@@ -60,10 +61,10 @@ function construirInfoFactura(info: InfoFactura): Record<string, unknown> {
 
   if (info.guiaRemision) result.guiaRemision = info.guiaRemision;
 
-  result.razonSocialComprador = info.razonSocialComprador;
+  result.razonSocialComprador = sanitizarTextoSri(info.razonSocialComprador);
   result.identificacionComprador = info.identificacionComprador;
 
-  if (info.direccionComprador) result.direccionComprador = info.direccionComprador;
+  if (info.direccionComprador) result.direccionComprador = sanitizarTextoSri(info.direccionComprador);
 
   result.totalSinImpuestos = formatearDecimal(info.totalSinImpuestos, 2);
   result.totalDescuento = formatearDecimal(info.totalDescuento, 2);
@@ -110,12 +111,12 @@ function construirInfoFactura(info: InfoFactura): Record<string, unknown> {
 
 function construirDetalleFactura(detalle: DetalleFactura): Record<string, unknown> {
   const result: Record<string, unknown> = {
-    codigoPrincipal: detalle.codigoPrincipal,
+    codigoPrincipal: sanitizarTextoSri(detalle.codigoPrincipal),
   };
 
-  if (detalle.codigoAuxiliar) result.codigoAuxiliar = detalle.codigoAuxiliar;
-  result.descripcion = detalle.descripcion;
-  if (detalle.unidadMedida) result.unidadMedida = detalle.unidadMedida;
+  if (detalle.codigoAuxiliar) result.codigoAuxiliar = sanitizarTextoSri(detalle.codigoAuxiliar);
+  result.descripcion = sanitizarTextoSri(detalle.descripcion);
+  if (detalle.unidadMedida) result.unidadMedida = sanitizarTextoSri(detalle.unidadMedida);
 
   result.cantidad = formatearDecimal(detalle.cantidad, 6);
   result.precioUnitario = formatearDecimal(detalle.precioUnitario, 6);
@@ -125,7 +126,7 @@ function construirDetalleFactura(detalle: DetalleFactura): Record<string, unknow
   if (detalle.detallesAdicionales && detalle.detallesAdicionales.length > 0) {
     result.detallesAdicionales = {
       detAdicional: detalle.detallesAdicionales.map((d) => ({
-        $: { nombre: d.nombre, valor: d.valor },
+        $: { nombre: sanitizarTextoSri(d.nombre), valor: sanitizarTextoSri(d.valor) },
       })),
     };
   }

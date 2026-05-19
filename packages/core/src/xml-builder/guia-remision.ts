@@ -10,6 +10,7 @@ import {
   construirInfoTributaria,
   crearBuilderXml,
   formatearDecimal,
+  sanitizarTextoSri,
 } from './shared.js';
 
 export function construirGuiaRemisionXml(guia: GuiaRemision): string {
@@ -36,10 +37,10 @@ export function construirGuiaRemisionXml(guia: GuiaRemision): string {
 function construirInfoGuiaRemision(info: InfoGuiaRemision): Record<string, unknown> {
   const result: Record<string, unknown> = {};
 
-  if (info.dirEstablecimiento) result.dirEstablecimiento = info.dirEstablecimiento;
+  if (info.dirEstablecimiento) result.dirEstablecimiento = sanitizarTextoSri(info.dirEstablecimiento);
 
-  result.dirPartida = info.dirPartida;
-  result.razonSocialTransportista = info.razonSocialTransportista;
+  result.dirPartida = sanitizarTextoSri(info.dirPartida);
+  result.razonSocialTransportista = sanitizarTextoSri(info.razonSocialTransportista);
   result.tipoIdentificacionTransportista = info.tipoIdentificacionTransportista;
   result.rucTransportista = info.rucTransportista;
 
@@ -50,7 +51,7 @@ function construirInfoGuiaRemision(info: InfoGuiaRemision): Record<string, unkno
 
   result.fechaIniTransporte = info.fechaIniTransporte;
   result.fechaFinTransporte = info.fechaFinTransporte;
-  result.placa = info.placa;
+  result.placa = sanitizarTextoSri(info.placa);
 
   return result;
 }
@@ -59,14 +60,14 @@ function construirDestinatario(dest: DestinatarioGuiaRemision): Record<string, u
   const result: Record<string, unknown> = {
     tipoIdentificacionDestinatario: dest.tipoIdentificacionDestinatario,
     identificacionDestinatario: dest.identificacionDestinatario,
-    razonSocialDestinatario: dest.razonSocialDestinatario,
-    dirDestinatario: dest.dirDestinatario,
-    motivoTraslado: dest.motivoTraslado,
+    razonSocialDestinatario: sanitizarTextoSri(dest.razonSocialDestinatario),
+    dirDestinatario: sanitizarTextoSri(dest.dirDestinatario),
+    motivoTraslado: sanitizarTextoSri(dest.motivoTraslado),
   };
 
   if (dest.docAduaneroUnico) result.docAduaneroUnico = dest.docAduaneroUnico;
   if (dest.codEstabDestino) result.codEstabDestino = dest.codEstabDestino;
-  if (dest.ruta) result.ruta = dest.ruta;
+  if (dest.ruta) result.ruta = sanitizarTextoSri(dest.ruta);
   if (dest.codDocSustento) result.codDocSustento = dest.codDocSustento;
   if (dest.numDocSustento) result.numDocSustento = dest.numDocSustento;
   if (dest.numAutDocSustento) result.numAutDocSustento = dest.numAutDocSustento;
@@ -81,18 +82,18 @@ function construirDestinatario(dest: DestinatarioGuiaRemision): Record<string, u
 
 function construirDetalleGuiaRemision(detalle: DetalleGuiaRemision): Record<string, unknown> {
   const result: Record<string, unknown> = {
-    codigoInterno: detalle.codigoInterno,
+    codigoInterno: sanitizarTextoSri(detalle.codigoInterno),
   };
 
-  if (detalle.codigoAdicional) result.codigoAdicional = detalle.codigoAdicional;
+  if (detalle.codigoAdicional) result.codigoAdicional = sanitizarTextoSri(detalle.codigoAdicional);
 
-  result.descripcion = detalle.descripcion;
+  result.descripcion = sanitizarTextoSri(detalle.descripcion);
   result.cantidad = formatearDecimal(detalle.cantidad, 6);
 
   if (detalle.detallesAdicionales && detalle.detallesAdicionales.length > 0) {
     result.detallesAdicionales = {
       detAdicional: detalle.detallesAdicionales.map((d) => ({
-        $: { nombre: d.nombre, valor: d.valor },
+        $: { nombre: sanitizarTextoSri(d.nombre), valor: sanitizarTextoSri(d.valor) },
       })),
     };
   }

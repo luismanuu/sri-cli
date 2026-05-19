@@ -9,6 +9,7 @@ import {
   construirInfoTributaria,
   crearBuilderXml,
   formatearDecimal,
+  sanitizarTextoSri,
 } from './shared.js';
 
 export function construirNotaCreditoXml(notaCredito: NotaCredito): string {
@@ -37,10 +38,10 @@ function construirInfoNotaCredito(info: InfoNotaCredito): Record<string, unknown
     fechaEmision: info.fechaEmision,
   };
 
-  if (info.dirEstablecimiento) result.dirEstablecimiento = info.dirEstablecimiento;
+  if (info.dirEstablecimiento) result.dirEstablecimiento = sanitizarTextoSri(info.dirEstablecimiento);
 
   result.tipoIdentificacionComprador = info.tipoIdentificacionComprador;
-  result.razonSocialComprador = info.razonSocialComprador;
+  result.razonSocialComprador = sanitizarTextoSri(info.razonSocialComprador);
   result.identificacionComprador = info.identificacionComprador;
 
   if (info.contribuyenteEspecial) result.contribuyenteEspecial = info.contribuyenteEspecial;
@@ -64,18 +65,18 @@ function construirInfoNotaCredito(info: InfoNotaCredito): Record<string, unknown
     })),
   };
 
-  result.motivo = info.motivo;
+  result.motivo = sanitizarTextoSri(info.motivo);
   return result;
 }
 
 function construirDetalleNotaCredito(detalle: DetalleNotaCredito): Record<string, unknown> {
   const result: Record<string, unknown> = {
-    codigoInterno: detalle.codigoInterno,
+    codigoInterno: sanitizarTextoSri(detalle.codigoInterno),
   };
 
-  if (detalle.codigoAdicional) result.codigoAdicional = detalle.codigoAdicional;
+  if (detalle.codigoAdicional) result.codigoAdicional = sanitizarTextoSri(detalle.codigoAdicional);
 
-  result.descripcion = detalle.descripcion;
+  result.descripcion = sanitizarTextoSri(detalle.descripcion);
   result.cantidad = formatearDecimal(detalle.cantidad, 6);
   result.precioUnitario = formatearDecimal(detalle.precioUnitario, 6);
   result.descuento = formatearDecimal(detalle.descuento, 2);
@@ -84,7 +85,7 @@ function construirDetalleNotaCredito(detalle: DetalleNotaCredito): Record<string
   if (detalle.detallesAdicionales && detalle.detallesAdicionales.length > 0) {
     result.detallesAdicionales = {
       detAdicional: detalle.detallesAdicionales.map((d) => ({
-        $: { nombre: d.nombre, valor: d.valor },
+        $: { nombre: sanitizarTextoSri(d.nombre), valor: sanitizarTextoSri(d.valor) },
       })),
     };
   }

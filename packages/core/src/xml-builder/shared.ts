@@ -24,6 +24,23 @@ export function formatearDecimal(valor: number, decimales: number): string {
 }
 
 /**
+ * Sanitiza texto para inclusión en XML del SRI.
+ *
+ * Elimina caracteres de control C0 (excepto \t y \n), C1 (incluye NEL
+ * U+0085), y separadores Unicode U+2028/U+2029. xml2js los escapaba como
+ * `&#NN;` pero los XSDs del SRI no aceptan esas entidades y rechazan el
+ * comprobante con error de validación. Estos caracteres pueden colarse
+ * fácilmente desde input copiado de PDFs, Word, o sistemas legacy.
+ */
+// eslint-disable-next-line no-control-regex
+const RE_CHARS_PROHIBIDOS_SRI = /[\x00-\x08\x0B-\x1F\x7F-\x9F\u2028\u2029]/g;
+
+export function sanitizarTextoSri(s: string | undefined | null): string {
+  if (s == null) return '';
+  return s.replace(RE_CHARS_PROHIBIDOS_SRI, '');
+}
+
+/**
  * Construye el bloque `infoTributaria` común a todos los comprobantes.
  * El orden de las claves importa porque xml2js respeta el orden de
  * iteración del objeto.
@@ -32,11 +49,11 @@ export function construirInfoTributaria(info: InfoTributaria): Record<string, un
   const result: Record<string, unknown> = {
     ambiente: info.ambiente,
     tipoEmision: info.tipoEmision,
-    razonSocial: info.razonSocial,
+    razonSocial: sanitizarTextoSri(info.razonSocial),
   };
 
   if (info.nombreComercial) {
-    result.nombreComercial = info.nombreComercial;
+    result.nombreComercial = sanitizarTextoSri(info.nombreComercial);
   }
 
   result.ruc = info.ruc;
@@ -45,10 +62,10 @@ export function construirInfoTributaria(info: InfoTributaria): Record<string, un
   result.estab = info.estab;
   result.ptoEmi = info.ptoEmi;
   result.secuencial = info.secuencial;
-  result.dirMatriz = info.dirMatriz;
+  result.dirMatriz = sanitizarTextoSri(info.dirMatriz);
 
   if (info.agenteRetencion) {
-    result.agenteRetencion = info.agenteRetencion;
+    result.agenteRetencion = sanitizarTextoSri(info.agenteRetencion);
   }
   if (info.contribuyenteRimpe) {
     result.contribuyenteRimpe = info.contribuyenteRimpe;
@@ -67,8 +84,8 @@ export function construirInfoAdicional(
   if (!campos || campos.length === 0) return null;
   return {
     campoAdicional: campos.map((campo) => ({
-      $: { nombre: campo.nombre },
-      _: campo.valor,
+      $: { nombre: sanitizarTextoSri(campo.nombre) },
+      _: sanitizarTextoSri(campo.valor),
     })),
   };
 }

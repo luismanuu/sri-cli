@@ -89,6 +89,38 @@ describe('construirFacturaXml', () => {
     expect(xml).not.toContain('<nombreComercial>');
   });
 
+  it('sanitiza caracteres de control en campos texto user-supplied (S2)', () => {
+    // razonSocial con NEL (U+0085), separator (U+2028) y BEL (\x07)
+    const sucio: Factura = {
+      ...facturaFixture,
+      infoTributaria: {
+        ...facturaFixture.infoTributaria,
+        razonSocial: 'JUAN\x07 PEREZ SA\u2028',
+        dirMatriz: 'Av.\u2029 Amazonas\x01',
+      },
+      infoFactura: {
+        ...facturaFixture.infoFactura,
+        razonSocialComprador: 'COMPRADOR X',
+        direccionComprador: 'GYE\x02',
+      },
+      detalles: [
+        {
+          ...facturaFixture.detalles[0]!,
+          descripcion: 'Producto\u2028 con basura\x1F',
+        },
+      ],
+      infoAdicional: [{ nombre: 'note\x08', valor: 'value' }],
+    };
+    const xml = construirFacturaXml(sucio);
+    // Ningún char de control prohibido debe quedar en el XML emitido
+    expect(xml).not.toMatch(/[\x00-\x08\x0B-\x1F\x7F-\x9F\u2028\u2029]/);
+    // Y los textos legibles quedan intactos
+    expect(xml).toContain('JUAN PEREZ SA');
+    expect(xml).toContain('Av. Amazonas');
+    expect(xml).toContain('COMPRADOR X');
+    expect(xml).toContain('Producto con basura');
+  });
+
   it('emite <retenciones> cuando hay retenciones declaradas', () => {
     const conRetencion: Factura = {
       ...facturaFixture,

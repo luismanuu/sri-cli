@@ -9,6 +9,7 @@ import {
   construirInfoTributaria,
   crearBuilderXml,
   formatearDecimal,
+  sanitizarTextoSri,
 } from './shared.js';
 
 export function construirNotaDebitoXml(notaDebito: NotaDebito): string {
@@ -37,10 +38,10 @@ function construirInfoNotaDebito(info: InfoNotaDebito): Record<string, unknown> 
     fechaEmision: info.fechaEmision,
   };
 
-  if (info.dirEstablecimiento) result.dirEstablecimiento = info.dirEstablecimiento;
+  if (info.dirEstablecimiento) result.dirEstablecimiento = sanitizarTextoSri(info.dirEstablecimiento);
 
   result.tipoIdentificacionComprador = info.tipoIdentificacionComprador;
-  result.razonSocialComprador = info.razonSocialComprador;
+  result.razonSocialComprador = sanitizarTextoSri(info.razonSocialComprador);
   result.identificacionComprador = info.identificacionComprador;
 
   if (info.contribuyenteEspecial) result.contribuyenteEspecial = info.contribuyenteEspecial;
@@ -73,7 +74,7 @@ function construirInfoNotaDebito(info: InfoNotaDebito): Record<string, unknown> 
 
 function construirMotivoNotaDebito(motivo: MotivoNotaDebito): Record<string, unknown> {
   return {
-    razon: motivo.razon,
+    razon: sanitizarTextoSri(motivo.razon),
     valor: formatearDecimal(motivo.valor, 2),
   };
 }

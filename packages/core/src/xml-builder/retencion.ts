@@ -6,6 +6,7 @@ import {
   construirInfoTributaria,
   crearBuilderXml,
   formatearDecimal,
+  sanitizarTextoSri,
 } from './shared.js';
 
 /**
@@ -113,7 +114,7 @@ function construirInfoRetencion(info: InfoRetencion): Record<string, unknown> {
     fechaEmision: info.fechaEmision,
   };
 
-  if (info.dirEstablecimiento) result.dirEstablecimiento = info.dirEstablecimiento;
+  if (info.dirEstablecimiento) result.dirEstablecimiento = sanitizarTextoSri(info.dirEstablecimiento);
   if (info.contribuyenteEspecial) result.contribuyenteEspecial = info.contribuyenteEspecial;
 
   result.obligadoContabilidad = info.obligadoContabilidad;
@@ -132,7 +133,7 @@ function construirInfoRetencion(info: InfoRetencion): Record<string, unknown> {
   }
 
   result.parteRel = info.parteRel ?? 'NO';
-  result.razonSocialSujetoRetenido = info.razonSocialSujetoRetenido;
+  result.razonSocialSujetoRetenido = sanitizarTextoSri(info.razonSocialSujetoRetenido);
   result.identificacionSujetoRetenido = info.identificacionSujetoRetenido;
   result.periodoFiscal = info.periodoFiscal;
 
