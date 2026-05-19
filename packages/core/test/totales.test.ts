@@ -97,6 +97,24 @@ describe('calcularTotales', () => {
     expect(result.importeTotal).toBe(26.45);
   });
 
+  it('mantiene invariante importeTotal == totalSinImpuestos + Σvalor con tarifas mixtas (S1)', () => {
+    // 12 detalles a 3 tarifas distintas (0%, 12%, 14%). Cada detalle aporta
+    // valores con fracciones que, si se redondean a 2dp antes de acumular,
+    // pueden hacer drift al sumar.
+    const detalles: DetalleFactura[] = [];
+    for (let i = 0; i < 4; i++) {
+      detalles.push(detalle({ precio: 11.11, baseImponible: 11.11, valor: 0, codigoPorcentaje: '0', tarifa: 0 }));
+      detalles.push(detalle({ precio: 33.33, baseImponible: 33.33, valor: 3.9996, codigoPorcentaje: '2', tarifa: 12 }));
+      detalles.push(detalle({ precio: 77.77, baseImponible: 77.77, valor: 10.8878, codigoPorcentaje: '3', tarifa: 14 }));
+    }
+    const result = calcularTotales(detalles);
+
+    // Invariante exacto: importeTotal == totalSinImpuestos + Σvalor (sobre displays redondeados)
+    const sumaImpuestos = result.totalConImpuestos.reduce((s, i) => s + i.valor, 0);
+    const importeEsperado = Number((result.totalSinImpuestos + sumaImpuestos).toFixed(2));
+    expect(result.importeTotal).toBe(importeEsperado);
+  });
+
   it('maneja un único detalle con IVA 0%', () => {
     const detalles = [
       detalle({

@@ -61,16 +61,23 @@ export function calcularTotales(detalles: DetalleFactura[]): TotalesCalculados {
     valor: imp.valor.toDecimalPlaces(2).toNumber(),
   }));
 
+  // El SRI valida que importeTotal == totalSinImpuestos + Σvalor sobre los
+  // valores DISPLAY (los que aparecen en el XML). Por eso sumamos los
+  // campos ya redondeados a 2 decimales en Decimal y, recién entonces,
+  // convertimos a number. De lo contrario, mezclar el acumulador unrounded
+  // de totalSinImpuestos con la suma de valores rounded puede romper la
+  // identidad por 1-2 centavos en facturas con muchas líneas o tarifas.
+  const totalSinImpuestosFinal = totalSinImpuestos.toDecimalPlaces(2);
   const totalImpuestos = totalConImpuestos.reduce(
     (sum, imp) => sum.plus(new Decimal(imp.valor)),
     new Decimal(0),
   );
-  const importeTotal = totalSinImpuestos.plus(totalImpuestos);
+  const importeTotal = totalSinImpuestosFinal.plus(totalImpuestos);
 
   return {
-    totalSinImpuestos: totalSinImpuestos.toDecimalPlaces(2).toNumber(),
+    totalSinImpuestos: totalSinImpuestosFinal.toNumber(),
     totalDescuento: totalDescuento.toDecimalPlaces(2).toNumber(),
     totalConImpuestos,
-    importeTotal: importeTotal.toDecimalPlaces(2).toNumber(),
+    importeTotal: importeTotal.toNumber(),
   };
 }
