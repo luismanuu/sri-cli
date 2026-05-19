@@ -59,7 +59,10 @@ export const compradorSchema = z.object({
 export const impuestoDetalleSchema = z.object({
   codigo: z.string().min(1),
   codigoPorcentaje: z.string().min(1),
-  tarifa: z.number().min(0),
+  tarifa: z
+    .number()
+    .min(0, { message: 'La tarifa no puede ser negativa' })
+    .max(100, { message: 'La tarifa no puede exceder 100%' }),
   baseImponible: z.number().min(0),
   valor: z.number().min(0),
 });

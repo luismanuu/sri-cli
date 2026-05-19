@@ -112,11 +112,16 @@ function formatearFecha(date: Date): string {
 }
 
 function validarRucBasico(ruc: string): string {
-  const rucLimpio = ruc.replace(/\D/g, '');
-  if (rucLimpio.length !== 13) {
+  // Rechazamos input con caracteres no numéricos en vez de hacer strip
+  // silencioso: si llega "0924-383-631-001" probablemente sea un bug del
+  // caller, no algo a "limpiar" detrás de su espalda.
+  if (!/^\d+$/.test(ruc)) {
+    throw new ClaveAccesoError('RUC inválido: solo se permiten dígitos');
+  }
+  if (ruc.length !== 13) {
     throw new ClaveAccesoError('RUC inválido: debe tener 13 dígitos');
   }
-  return rucLimpio;
+  return ruc;
 }
 
 function generarCodigoNumerico(): string {
