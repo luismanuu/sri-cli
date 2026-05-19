@@ -79,6 +79,10 @@ export const detalleFacturaSchema = z.object({
   descuento: z.number().min(0, {
     message: 'El descuento se expresa en valor monetario absoluto y no puede ser negativo',
   }),
+  precioTotalSinImpuesto: z.number({
+    required_error: 'El precioTotalSinImpuesto es requerido en cada detalle',
+    invalid_type_error: 'El precioTotalSinImpuesto debe ser numérico',
+  }).min(0, { message: 'El precioTotalSinImpuesto no puede ser negativo' }),
   detallesAdicionales: z.array(detalleAdicionalSchema).optional(),
   impuestos: z.array(impuestoDetalleSchema).min(1, { message: 'Debe declarar al menos un impuesto en el detalle' }),
 });
