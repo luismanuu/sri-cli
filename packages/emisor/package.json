@@ -1,0 +1,36 @@
+{
+  "name": "@sri-cli/emisor",
+  "version": "0.0.0",
+  "description": "Orquestación del ciclo de emisión de facturas electrónicas del SRI Ecuador: construir, firmar, enviar, autorizar y persistir",
+  "license": "AGPL-3.0-only",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run --coverage",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@sri-cli/core": "workspace:*",
+    "@sri-cli/signing": "workspace:*",
+    "@sri-cli/sri-client": "workspace:*",
+    "@sri-cli/storage": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "@vitest/coverage-v8": "^1.6.0",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5",
+    "vitest": "^1.6.0"
+  }
+}
