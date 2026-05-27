@@ -43,6 +43,37 @@ importers:
         specifier: ^1.6.0
         version: 1.6.1(@types/node@20.19.41)
 
+  packages/emisor:
+    dependencies:
+      '@sri-cli/core':
+        specifier: workspace:*
+        version: link:../core
+      '@sri-cli/signing':
+        specifier: workspace:*
+        version: link:../signing
+      '@sri-cli/sri-client':
+        specifier: workspace:*
+        version: link:../sri-client
+      '@sri-cli/storage':
+        specifier: workspace:*
+        version: link:../storage
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.41
+      '@vitest/coverage-v8':
+        specifier: ^1.6.0
+        version: 1.6.1(vitest@1.6.1(@types/node@20.19.41))
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.1(postcss@8.5.14)(tsx@4.22.2)(typescript@5.9.3)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.3
+      vitest:
+        specifier: ^1.6.0
+        version: 1.6.1(@types/node@20.19.41)
+
   packages/signing:
     dependencies:
       '@peculiar/webcrypto':
